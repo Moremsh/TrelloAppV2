@@ -53,7 +53,7 @@ src/
 Built in stages, each one focused on a single concept:
 
 - [x] Step 0 — Project setup
-- [ ] Step 1 — Data model + state map
+- [x] Step 1 — Data model + state map
 - [ ] Step 2 — Router + layout shell
 - [ ] Step 3 — Board renders from static data
 - [ ] Step 4 — Store + selectors
