@@ -1,32 +1,65 @@
-# React + TypeScript + Vite
+# TrelloApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A Trello-style task board, rebuilt from scratch step by step to learn frontend architecture properly — state management, feature-based structure, and where logic should live in a React app.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React + TypeScript
+- Vite
+- Redux Toolkit
+- React Router
+- Tailwind CSS + shadcn/ui
+- @hello-pangea/dnd (drag and drop)
+- Vitest
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Other scripts:
+
+```bash
+npm run build    # type-check + production build
+npm run lint      # oxlint
+npm run preview   # preview a production build locally
+```
+
+## Project structure
+
+Feature-based, not type-based — a feature folder owns everything only it uses, and code only moves to `shared/` once a second feature needs it.
+
+```
+src/
+  app/                  store, router, providers
+  features/
+    tasks/
+      components/
+      hooks/
+      store/            slice + selectors
+      utils.ts          pure functions
+      constants.ts
+  shared/
+    components/         composed shared UI (Header, Sidebar)
+  components/
+    ui/                 shadcn/ui primitives
+  pages/
+```
+
+## Build log
+
+Built in stages, each one focused on a single concept:
+
+- [x] Step 0 — Project setup
+- [ ] Step 1 — Data model + state map
+- [ ] Step 2 — Router + layout shell
+- [ ] Step 3 — Board renders from static data
+- [ ] Step 4 — Store + selectors
+- [ ] Step 5 — Add / edit / delete
+- [ ] Step 6 — Drag and drop
+- [ ] Step 7 — Search + filter via URL
+- [ ] Step 8 — Theme
+- [ ] Step 9 — Dashboard + charts
+- [ ] Step 10 — Tests + polish
