@@ -13,15 +13,17 @@ const BoardPage = () => {
   if(!params.boardId) return <Navigate to={'not-found'} />
   const board = getBoardById(params.boardId! , boards)
   const boardLists = getListsForBoard(board, lists)
-  return <Card className="w-full max-w-sm">
-    <CardHeader>
-      {board.title}
-    </CardHeader>
-    <CardContent className="flex space-x-2 justify-center items-center">
-       {boardLists?.map((list) => <ListCard key={list.id} list={list} tasks={tasks} /> )}
-    </CardContent>
-     
-  </Card>
+  return <div className="w-[50%] m-auto">
+      <Card className="">
+        <CardHeader>
+          {board.title}
+        </CardHeader>
+        <CardContent className="flex space-x-3 flex-wrap">
+          {boardLists?.map((list) => <ListCard key={list.id} list={list} tasks={tasks} /> )}
+        </CardContent>
+      
+      </Card>
+    </div>
 }
 
 export default BoardPage

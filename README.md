@@ -57,7 +57,7 @@ Built in stages, each one focused on a single concept:
 - [x] Step 2 — Router + layout shell
 - [x] Step 3 — Board renders from static data
 - [x] Step 4 — Store + selectors
-- [ ] Step 5 — Add / edit / delete
+- [x] Step 5 — Add / edit / delete
 - [ ] Step 6 — Drag and drop
 - [ ] Step 7 — Search + filter via URL
 - [ ] Step 8 — Theme
