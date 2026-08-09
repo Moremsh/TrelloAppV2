@@ -1,6 +1,6 @@
 import {describe , it , expect} from 'vitest'
 import { boards, lists, tasks } from './constants'
-import { getListsForBoard, getTasksForList } from './utils'
+import { getBoardById, getListsForBoard, getTasksForList } from './utils'
 
 describe('getListsForBoard',()=>{
   it('returns the lists for board in reference' ,()=>{
@@ -28,4 +28,16 @@ describe('getTasksForList',()=>{
     expect(()=> getTasksForList(lists[0],[])).toThrow("Not found")
   })
 
+})
+
+
+describe('return board by id',()=>{
+  it('returns the board for given id .',()=>{
+    const board = getBoardById('123',boards)
+    expect(board).toEqual({id : "123",listIds : ["1"], title : "First"})
+  })
+
+  it('Throws when no board found',()=>{
+    expect(()=>{getBoardById('11111',boards)}).toThrow("Not Found")
+  })
 })

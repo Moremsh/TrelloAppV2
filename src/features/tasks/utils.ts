@@ -15,4 +15,10 @@ export function getTasksForList(list : List , allTasks : Task[]) : Task[]{
     return task
   })
 }
+
+export function getBoardById(id : string, boards : Board[]): Board {
+  const board = boards.find((board)=> board.id === id)
+  if(!board) throw new Error("Not Found")
+  return board
+}
  
