@@ -56,7 +56,7 @@ Built in stages, each one focused on a single concept:
 - [x] Step 1 — Data model + state map
 - [x] Step 2 — Router + layout shell
 - [x] Step 3 — Board renders from static data
-- [ ] Step 4 — Store + selectors
+- [x] Step 4 — Store + selectors
 - [ ] Step 5 — Add / edit / delete
 - [ ] Step 6 — Drag and drop
 - [ ] Step 7 — Search + filter via URL

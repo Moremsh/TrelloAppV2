@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { getTasksForList } from '../utils'
+import {getTasksForList } from '../utils'
 import { Item, ItemTitle } from '@/components/ui/item'
 import { Separator } from '@base-ui/react/separator'
 import type { List, Task } from '../types'
@@ -7,7 +7,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 
 interface ListProps {
   list : List,
-  tasks : Task[]
+  tasks : Record<string,Task>
 }
 
 const ListCard = ({list, tasks} : ListProps)=> {

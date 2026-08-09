@@ -1,47 +1,26 @@
 import type { Board, List, Task } from "./types";
 
-export const boards : Board[] = [
+export const boards : Record<string, Board> = 
   {
-    id : "123",
-    listIds : ["1"],
-    title : "First"
-  } ,
-  {
-    id: "222",
-    listIds: ["2" , "3"],
-    title: "Second"
+    '123': {id : "123",listIds : ["1"],title : "First"} ,
+    "222" : {id: "222",listIds: ["2" , "3"],title: "Second"}
   }
-]
 
-export const lists : List[] = [
+export const lists : Record<string, List> = 
   {
-    id : "1",
-    taskIds : ["1"],
-    title : "To-DO List"
-  },
-    {
-    id : "2",
-    taskIds : ["3"],
-    title : "onGoing"
-  },
-    {
-    id : "3",
-    taskIds : ["2"],
-    title : "finished"
+    "1" : {id : "1",taskIds : ["1"],title : "To-DO List"},
+    '2' : {id : "2",taskIds : ["3"],title : "onGoing"},
+    '3' : {id : "3",taskIds : ["2"],title : "finished"}
   }
-]
 
-export const tasks : Task[] = [
-  {
-    id : "1",
-    title : "swim"
-  },
-  {
-    id : "2",
-    title : "warm Up"
-  },
-  {
-    id : "3",
-    title : "study"
-  }
-]
+    
+
+
+export const tasks : Record<string, Task> ={
+  '1': {id : "1", title : "swim"},
+  '2': {id : "2",title : "warm Up"},
+  '3':  {id : "3",title : "study"}
+}
+  
+  
+ 
