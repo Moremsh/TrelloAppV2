@@ -7,12 +7,14 @@ import { deleteTask, editTask } from '../store/taskSlice'
 import { useState } from 'react'
 import {Pencil} from "lucide-react"
 import { Input } from '@/components/ui/input'
+import type { DraggableProvided } from '@hello-pangea/dnd'
 interface TaskProps {
   task : Task
-  list : List
+  list : List,
+  provided : DraggableProvided
 }
 
-const TaskCard = ({task , list} : TaskProps) => {
+const TaskCard = ({task, list, provided} : TaskProps) => {
   const [isEditting,setEditting] = useState(false)
   const [editValue, setEditValue] = useState(task.title)
   const dispatch = useDispatch()
@@ -25,7 +27,7 @@ const TaskCard = ({task , list} : TaskProps) => {
     setEditting(!isEditting)
   } 
   return (
-    <div key={task.id} className='w-full my-2 '>
+    <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} key={task.id} className='w-full my-2 '>
       <Item className='flex justify-between flex-nowrap' variant={'outline'}>
         { isEditting ? <Input defaultValue={editValue} onChange={(e)=> setEditValue(e.target.value)} onSubmit={(e)=>handleEditTask()} />: <ItemTitle>{task.title}</ItemTitle> }
         <ItemActions>

@@ -18,6 +18,11 @@ export const taskSlice = createSlice({
   name : "taskSlice",
   initialState,
   reducers : {
+    moveTask:(state,action : PayloadAction<{taskId:string, destinationListId:string,sourceListId:string, destinationIndex: number}>) => {
+        state.lists[action.payload.sourceListId].taskIds = state.lists[action.payload.sourceListId].taskIds
+        .filter((task)=> task !== action.payload.taskId)
+        state.lists[action.payload.destinationListId].taskIds.splice(action.payload.destinationIndex,0,action.payload.taskId)
+    },
     addTask: (state,action : PayloadAction<{listId : string , taskTitle : string}>)=>{
       const id = crypto.randomUUID()
       state.tasks[id] = {id, title: action.payload.taskTitle}
@@ -34,5 +39,5 @@ export const taskSlice = createSlice({
   }
 })
 
-export const {addTask , editTask, deleteTask} = taskSlice.actions
+export const {addTask , editTask, deleteTask, moveTask} = taskSlice.actions
 export default taskSlice.reducer

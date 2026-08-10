@@ -7,6 +7,7 @@ import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '
 import { useDispatch } from 'react-redux'
 import { addTask } from '../store/taskSlice'
 import { useState } from 'react'
+import { Draggable, Droppable } from '@hello-pangea/dnd'
 interface ListProps {
   list : List,
   tasks : Record<string,Task>
@@ -33,9 +34,19 @@ const ListCard = ({list, tasks} : ListProps)=> {
             <InputGroupButton onClick={handleAddButton} variant="secondary">Add</InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
-        <ScrollArea className={'max-h-87'}>
-          {getTasksForList(list,tasks).map((task)=> <TaskCard key={task.id} list={list} task={task}/>) }
-        </ScrollArea>
+        <Droppable droppableId={list.id} >
+          {(provided) => <div ref={provided.innerRef} {...provided.droppableProps}>
+                <ScrollArea className={'max-h-87'}>
+                { getTasksForList(list,tasks).map(
+                    (task, index)=><Draggable  index={index} key={task.id} draggableId={task.id}>
+                            {(provided)=>(<TaskCard key={task.id} list={list} task={task} provided={provided}/>)}
+                        </Draggable>)
+                    }
+                    {provided.placeholder}
+              </ScrollArea>
+            </div>}
+        </Droppable>
+
       </CardContent>
     </Card>
   )
