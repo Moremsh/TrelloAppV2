@@ -1,6 +1,6 @@
 import {describe , it , expect} from 'vitest'
 import { boards, lists, tasks } from './constants'
-import { getBoardById, getListsForBoard, getTasksForList } from './utils'
+import { filterByTitle, getBoardById, getListsForBoard, getTasksForList } from './utils'
 
 describe('getListsForBoard',()=>{
   it('returns the lists for board in reference' ,()=>{
@@ -41,3 +41,19 @@ describe('return board by id',()=>{
     expect(()=>{getBoardById('11111',boards)}).toThrow("Not Found")
   })
 })
+
+describe('return filtered tasks by title ',()=>{
+  it('returns the task in each list for given title',()=>{
+    const allTasks = getTasksForList(lists['2'],tasks)
+    expect(filterByTitle(allTasks,'stu')).toEqual([{id : "3",title : "study"}])
+  })
+
+  it('returns Not Found if no matches',()=>{
+    const allTasks = getTasksForList(lists['2'],tasks)
+    expect(()=> filterByTitle(allTasks,'')).toThrow("Not Found")
+  })
+
+})
+
+
+

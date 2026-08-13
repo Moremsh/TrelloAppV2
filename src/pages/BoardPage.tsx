@@ -3,15 +3,19 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import ListCard from "@/features/tasks/components/ListCard"
 import { getBoardById, getListsForBoard} from "@/features/tasks/utils"
 import { useDispatch, useSelector } from "react-redux"
-import {Navigate, useParams } from "react-router"
+import {Navigate, useParams, useSearchParams } from "react-router"
 import {DragDropContext, type DropResult} from "@hello-pangea/dnd"
 import { moveTask } from "@/features/tasks/store/taskSlice"
+import { Field } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
 
 
 
 const BoardPage = () => {
   const {tasks,boards,lists} = useSelector((state : RootState) => state.tasks)
   const params = useParams()
+  const [searchParams , setSearchParams] = useSearchParams()
+  const query = searchParams.get('q') ?? ''
   const dispatch = useDispatch()
   // Check For not valid endpoints...
   if(!params.boardId) return <Navigate to={'not-found'} />
@@ -36,10 +40,15 @@ const BoardPage = () => {
     <div className="w-[50%] m-auto">
       <Card className="">
         <CardHeader>
-          {board.title}
+          <div className="flex justify-between mx-5">
+            {board.title}
+            <Field orientation="horizontal" className="w-[50%]">
+              <Input type="search" placeholder="Search..." value={query} onChange={(e)=> setSearchParams({q : e.target.value})} />
+          </Field>
+          </div>
         </CardHeader>
         <CardContent className="flex space-x-3 flex-wrap">
-          {boardLists?.map((list) => <ListCard key={list.id} list={list} tasks={tasks} /> )}
+          {boardLists?.map((list) => <ListCard  query={query} key={list.id} list={list} tasks={tasks} /> )}
         </CardContent>
       
       </Card>

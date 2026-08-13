@@ -59,7 +59,7 @@ Built in stages, each one focused on a single concept:
 - [x] Step 4 — Store + selectors
 - [x] Step 5 — Add / edit / delete
 - [x] Step 6 — Drag and drop
-- [ ] Step 7 — Search + filter via URL
+- [x] Step 7 — Search via URL
 - [ ] Step 8 — Theme
 - [ ] Step 9 — Dashboard + charts
 - [ ] Step 10 — Tests + polish
