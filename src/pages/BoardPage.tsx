@@ -37,12 +37,12 @@ const BoardPage = () => {
   }
   
   return <DragDropContext onDragEnd={handleDragEnd}>
-    <div className="w-[50%] m-auto">
-      <Card className="">
+    <div className="w-full p-20 h-screen m-auto">
+      <Card className="h-full">
         <CardHeader>
           <div className="flex justify-between mx-5">
             {board.title}
-            <Field orientation="horizontal" className="w-[50%]">
+            <Field orientation="horizontal" className="w-[35%]">
               <Input type="search" placeholder="Search..." value={query} onChange={(e)=> setSearchParams({q : e.target.value})} />
           </Field>
           </div>

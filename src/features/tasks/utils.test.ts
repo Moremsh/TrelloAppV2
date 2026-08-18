@@ -48,9 +48,9 @@ describe('return filtered tasks by title ',()=>{
     expect(filterByTitle(allTasks,'stu')).toEqual([{id : "3",title : "study"}])
   })
 
-  it('returns Not Found if no matches',()=>{
+  it('returns Empty array if no matches',()=>{
     const allTasks = getTasksForList(lists['2'],tasks)
-    expect(()=> filterByTitle(allTasks,'')).toThrow("Not Found")
+    expect(filterByTitle(allTasks,'xssafd')).toEqual([])
   })
 
 })

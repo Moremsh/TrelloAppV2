@@ -23,7 +23,7 @@ export function getBoardById(id : string, boards : Record<string,Board>): Board 
 }
  
 export function filterByTitle(items: Task[] , query: string){
-  if(!query) throw new Error("Not Found") 
+  if (!query) return items
   return items.filter((item) => item.title.toLowerCase().includes(query.toLowerCase())
   )
 }

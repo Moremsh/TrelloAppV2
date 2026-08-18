@@ -1,7 +1,7 @@
 
 const BoardPicker = () => {
   return (
-    <div>
+    <div className="w-full">
       BoardPicker
     </div>
   )

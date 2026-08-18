@@ -26,5 +26,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "@/components/app-sidebar.tsx", "@/components/nav-main.tsx", "@/components/nav-projects.tsx", "@/components/nav-user.tsx", "@/components/team-switcher.tsx", "src/components/hooks/use-mobile.ts"]
 }
